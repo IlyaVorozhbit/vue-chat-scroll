@@ -1,7 +1,6 @@
 # vue-chat-scroll
 
-Forked from [theomessin/vue-chat-scroll](https://github.com/theomessin/vue-chat-scroll)
-Added new feature when scroll to the top of element , element would emits "scroll-top" event.
+Forked from [sj82516/vue-chat-scroll-top-load](https://github.com/sj82516/vue-chat-scroll-top-load)
 
 ## Installation
 
