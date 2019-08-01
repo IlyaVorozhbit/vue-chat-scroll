@@ -11,8 +11,15 @@
  * @file v-chat-scroll  directive definition
  */
 
-var scrollToBottom = function scrollToBottom(el) {
-    el.scrollTop = el.scrollHeight;
+var scrollToBottom = function scrollToBottom(el, smooth) {
+ if (typeof el.scroll === "function") {
+   el.scroll({
+     top: el.scrollHeight,
+     behavior: smooth ? 'smooth' : 'instant'
+   });
+ } else {
+   el.scrollTop = el.scrollHeight;
+ }
 };
 
 var emit = function emit(vnode, name, data) {
@@ -42,7 +49,7 @@ var vChatScroll = {
             var config = binding.value || {};
             var pause = config.always === false && scrolled;
             if (pause || e[e.length - 1].addedNodes.length != 1) return;
-            scrollToBottom(el);
+            scrollToBottom(el, config.smooth);
         }).observe(el, { childList: true, subtree: true });
     },
     inserted: scrollToBottom

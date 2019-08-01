@@ -5,9 +5,16 @@
  * @file v-chat-scroll  directive definition
  */
 
-const scrollToBottom = el => {
-    el.scrollTop = el.scrollHeight;
-};
+ const scrollToBottom = (el, smooth) => {
+   if (typeof el.scroll === "function") {
+     el.scroll({
+       top: el.scrollHeight,
+       behavior: smooth ? 'smooth' : 'instant'
+     });
+   } else {
+     el.scrollTop = el.scrollHeight;
+   }
+ };
 
 const emit = (vnode, name, data) => {
   var handlers = (vnode.data && vnode.data.on) ||
@@ -37,10 +44,13 @@ const vChatScroll = {
             let config = binding.value || {};
             let pause = config.always === false && scrolled;
             if (pause || e[e.length - 1].addedNodes.length != 1) return;
-            scrollToBottom(el);
+            scrollToBottom(el, config.smooth);
         })).observe(el, {childList: true, subtree: true});
     },
-    inserted: scrollToBottom
+    inserted: (el, binding) => {
+      const config = binding.value || {};
+      scrollToBottom(el, config.smooth);
+    },
 };
 
 
