@@ -1,29 +1,29 @@
-# vue-chat-scroll-top-load
+# vue-chat-scroll
 
 Forked from [theomessin/vue-chat-scroll](https://github.com/theomessin/vue-chat-scroll)
 Added new feature when scroll to the top of element , element would emits "scroll-top" event.
 
 ## Installation
 
-- #### NPM / Yarn
-  Run `npm install --save vue-chat-scroll-top-load`, or `yarn add vue-chat-scroll-top-load`
+- #### NPM
+  Run `npm i --save IlyaVorozhbit/vue-chat-scroll#master`
 
 - #### With Modules
 
   ``` js
   // ES6
   import Vue from 'vue'
-  import VueChatScroll from 'vue-chat-scroll-top-load'
+  import VueChatScroll from 'vue-chat-scroll'
   Vue.use(VueChatScroll)
 
   // ES5
   var Vue = require('vue')
-  Vue.use(require('vue-chat-scroll-top-load'))
+  Vue.use(require('vue-chat-scroll'))
   ```
 
 - #### `<script>` Include
 
-  Just include `./dist/vue-chat-scroll-top-load.js` after Vue itself.
+  Just include `./dist/vue-chat-scroll.js` after Vue itself.
 
 ## Usage
 
